@@ -9,7 +9,7 @@ import static java.lang.Math.*;
 @SuppressWarnings("FieldMayBeFinal")
 public class Triangle implements Rtriangle {
 
-    // coordinates
+    // координаты точек
     private int x1;
     private int y1;
     private int x2;
@@ -17,11 +17,14 @@ public class Triangle implements Rtriangle {
     private int x3;
     private int y3;
     
-    // sides length
+    // длины сторон
     private double firstSideLength;
     private double secondSideLength;
     private double thirdSideLength;
 
+   /**
+    * Конструктор с отдельными координатами
+    */
     public Triangle(int x1, int y1, int x2, int y2, int x3, int y3) {
         this.x1 = x1;
         this.y1 = y1;
@@ -33,6 +36,9 @@ public class Triangle implements Rtriangle {
         setSidesLength();
     }
 
+   /**
+    * Конструктор с массивом координат
+    */
     public Triangle(int[] coordinates) {
         this.x1 = coordinates[0];
         this.y1 = coordinates[1];
@@ -44,12 +50,19 @@ public class Triangle implements Rtriangle {
         setSidesLength();
     }
 
+   /**
+    *  Инициализация длин сторон треугольника
+    */
     private void setSidesLength() {
         firstSideLength  = sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2));
         secondSideLength = sqrt(pow(x2 - x3, 2) + pow(y2 - y3, 2));
         thirdSideLength  = sqrt(pow(x1 - x3, 2) + pow(y1 - y3, 2));
     }
     
+   /**
+    *  Метод возвращает отсортированный массив длин сторон треугольника, где 
+    *  sides[2] элемент - гипотенуза
+    */
     public double[] getSortedSides(){
         double[] sides = new double[]{firstSideLength,
                                       secondSideLength,
